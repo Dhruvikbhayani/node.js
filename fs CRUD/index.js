@@ -10,4 +10,10 @@ const fs= require('fs')
 // const data=fs.readFileSync("bio.txt","utf8")
 // console.log(data)
 
-fs.renameSync("bio.txt","fsCRUD/mybio.txt")
+// fs.renameSync("bio.txt","fsCRUD/mybio.txt")
+
+// delete file 
+// fs.unlinkSync("File name")
+
+// folder A delete
+// fs.rmdirSync("folder name")
