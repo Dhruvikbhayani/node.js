@@ -11,7 +11,7 @@ const fs= require('fs');
 // })
 
 // read file 
-fs.readFile("gg.txt","utf8",(err,data)=>{
- console.log(err)
-console.log(data)
-})
+// fs.readFile("gg.txt","utf8",(err,data)=>{
+//  console.log(err)
+// console.log(data)
+// })
