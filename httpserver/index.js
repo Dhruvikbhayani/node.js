@@ -8,10 +8,21 @@
 //If the response from the http server is supposed to displayed as HTML
 //you should include an HTTP header with the current content type.
 
-const http=require('http')
+const http=require('http');
+const { type } = require('os');
 const server=http.createServer((req,res)=>{
-    console.log(req.url)
-  res.end("Hello for other side ");
+    // console.log(req.url)
+    if(req.url =="/"){
+      res.end("Hello for home page ");
+    }else if(req.url=="/about"){
+      res.end("Hello for about page ");
+    }else if (req.url=="/contact"){
+      res.write("Hello for contact page")
+      res.end();
+    }else{
+      res.writeHead(404,{"content-type":"text/html"})
+      res.end("<h1>404 error </h1>");
+    }
 });
 server.listen(5020,()=>{
     console.log("port is run")
