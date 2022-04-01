@@ -18,9 +18,9 @@ app.get("/", (req, res) => {
     res.send("Hello from express")
 })
 
-app.get("/home", (req, res) => {
-    res.send("Hello from home page ")
-})
+// app.get("/home", (req, res) => {
+//     res.send("Hello from home page ")
+// })
 
 app.listen(5051, () => {
     console.log("Server is run")
