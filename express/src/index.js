@@ -11,9 +11,16 @@ const path = require('path')
 
 const static = path.join(__dirname, "../public")
 
-//builtin middleware
-app.use(express.static(static));
+// to set the view engine 
+app.set("view engine", 'hbs')
 
+//builtin middleware
+// app.use(express.static(static));
+
+//template engine route
+app.get("/", (req, res) => {
+    res.render('index')
+})
 app.get("/", (req, res) => {
     res.send("Hello from express")
 })
