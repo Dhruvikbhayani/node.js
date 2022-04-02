@@ -7,14 +7,15 @@
 const express = require('express')
 const app = express()
 const path = require('path')
-    // console.log(__dirname)
-
+const hbs = require('hbs')
 const static = path.join(__dirname, "../public")
-const template = path.join(__dirname, "../templet")
+const template = path.join(__dirname, "../templet/views")
+const partialspath = path.join(__dirname, "../templet/partials")
 
 // to set the view engine 
 app.set("view engine", 'hbs')
 app.set("views", template)
+hbs.registerPartials(partialspath)
 
 //builtin middleware
 // app.use(express.static(static));
