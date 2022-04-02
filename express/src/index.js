@@ -36,6 +36,12 @@ app.get("/", (req, res) => {
 //     res.send("Hello from home page ")
 // })
 
+app.get("*", (req, res) => {
+    res.render('404', {
+        errorcomemnt: "Opps page is not found"
+    })
+})
+
 app.listen(5051, () => {
     console.log("Server is run")
 })
