@@ -23,6 +23,8 @@ const playschema = new mongoose.Schema({
     }
 })
 
+//insert data 
+
 const playlist = new mongoose.model("playlist", playschema)
 
 // const data = new playlist({
@@ -35,17 +37,43 @@ const playlist = new mongoose.model("playlist", playschema)
 // })
 
 const createdata = async() => {
-    try {
-        const data = new playlist({
-            name: "react js",
-            type: "backend",
-            list: "no"
-        })
-        const savedata = await data.save();
-        console.log(savedata)
+        try {
+            const data = new playlist({
+                name: "js",
+                type: "frontend",
+                list: "no"
+            })
+            const data1 = new playlist({
+                name: "mongodb",
+                type: "database",
+                list: "no"
+            })
+            const data2 = new playlist({
+                name: "mongoose",
+                type: "module",
+                list: "no"
+            })
+            const data3 = new playlist({
+                name: "express",
+                type: "backend",
+                list: "no"
+            })
+            const savedata = await playlist.insertMany([data, data1, data2, data3]);
+            console.log(savedata)
 
-    } catch (err) {
-        console.log(err)
+        } catch (err) {
+            console.log(err)
+        }
     }
+    // createdata()
+
+
+
+//read data 
+
+const getdocument = async() => {
+    const result = await playlist.find()
+    console.log(result)
 }
-createdata()
+
+getdocument()
