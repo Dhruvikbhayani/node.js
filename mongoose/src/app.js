@@ -79,17 +79,36 @@ const playlist = new mongoose.model("playlist", playschema)
 
 //update  document
 
-const updateDocument = async(_id) => {
+// const updateDocument = async(_id) => {
+//     try {
+//         const result = await playlist.findByIdAndUpdate({ _id }, {
+//             $set: {
+//                 name: "node js"
+//             }
+//         })
+//         console.log(result)
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
+
+// updateDocument('625a5aa758ac0a7f6d744787')
+
+
+// delete documents
+
+const deleteDocument = async(_id) => {
     try {
-        const result = await playlist.findByIdAndUpdate({ _id }, {
-            $set: {
-                name: "node js"
-            }
-        })
+
+        const result = await playlist.deleteOne({ _id })
         console.log(result)
     } catch (err) {
         console.log(err)
     }
+
 }
 
-updateDocument('625a5aa758ac0a7f6d744787')
+
+
+
+deleteDocument('625e3bbb379dd863db1826ab')
