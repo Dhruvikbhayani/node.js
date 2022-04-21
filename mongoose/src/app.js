@@ -1,5 +1,4 @@
-const { type } = require('express/lib/response')
-const async = require('hbs/lib/async')
+const validator = require('validator')
 const mongoose = require('mongoose')
 
 
@@ -20,6 +19,16 @@ const playschema = new mongoose.Schema({
     list: {
         type: String,
         required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        validate(val) {
+            if (!validator.isEmail(val)) {
+                throw new Error("Email is invaild")
+
+            }
+        }
     }
 })
 const playlist = new mongoose.model("playlist", playschema)
@@ -36,36 +45,37 @@ const playlist = new mongoose.model("playlist", playschema)
 // //     console.log("document insert")
 // // })
 
-// const createdata = async() => {
-//         try {
-//             const data = new playlist({
-//                 name: "js",
-//                 type: "frontend",
-//                 list: "no"
-//             })
-//             const data1 = new playlist({
-//                 name: "mongodb",
-//                 type: "database",
-//                 list: "no"
-//             })
-//             const data2 = new playlist({
-//                 name: "mongoose",
-//                 type: "module",
-//                 list: "no"
-//             })
-//             const data3 = new playlist({
-//                 name: "express",
-//                 type: "backend",
-//                 list: "no"
-//             })
-//             const savedata = await playlist.insertMany([data, data1, data2, data3]);
-//             console.log(savedata)
+const createdata = async() => {
+    try {
+        //             const data = new playlist({
+        //                 name: "js",
+        //                 type: "frontend",
+        //                 list: "no"
+        //             })
+        //             const data1 = new playlist({
+        //                 name: "mongodb",
+        //                 type: "database",
+        //                 list: "no"
+        //             })
+        //             const data2 = new playlist({
+        //                 name: "mongoose",
+        //                 type: "module",
+        //                 list: "no"
+        //             })
+        const data3 = new playlist({
+            name: "express",
+            type: "backend",
+            list: "no",
+            email: "dk@test.com"
+        })
+        const savedata = await playlist.insertMany([data3]);
+        console.log(savedata)
 
-//         } catch (err) {
-//             console.log(err)
-//         }
-//     }
-// createdata()
+    } catch (err) {
+        console.log(err)
+    }
+}
+createdata()
 
 
 
@@ -98,17 +108,13 @@ const playlist = new mongoose.model("playlist", playschema)
 // delete documents
 
 const deleteDocument = async(_id) => {
-    try {
+        try {
 
-        const result = await playlist.deleteOne({ _id })
-        console.log(result)
-    } catch (err) {
-        console.log(err)
+            const result = await playlist.deleteOne({ _id })
+            console.log(result)
+        } catch (err) {
+            console.log(err)
+        }
+
     }
-
-}
-
-
-
-
-deleteDocument('625e3bbb379dd863db1826ab')
+    // deleteDocument('625e3bbb379dd863db1826ab')
