@@ -73,6 +73,8 @@ const createdata = async() => {
 
     } catch (err) {
         console.log(err)
+
+
     }
 }
 createdata()
