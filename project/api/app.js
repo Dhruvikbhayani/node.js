@@ -12,15 +12,12 @@ app.post("/students", (req, res) => {
 
     const user = new student(req.body)
 
-    user.save().then((err, data) => {
-            if (err) throw err
-            else {
-                res.status(201).send(data)
-            }
+    user.save().then(() => {
+            res.send(user)
         })
-        // .catch((e) => {
-        //     res.status(400).send(e)
-        // })
+        .catch((e) => {
+            res.status(400).send(e)
+        })
 })
 app.listen(port, () => {
     console.log(`server is run ${port}`)

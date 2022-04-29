@@ -20,8 +20,8 @@ const studentschema = new mongoose.Schema({
     },
     Phone: {
         type: Number,
-        unique: true,
-        required: true
+        required: true,
+        minlength: 10
     },
     address: {
         type: String,
