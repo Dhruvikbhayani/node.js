@@ -19,6 +19,12 @@ app.post("/students", (req, res) => {
             res.status(400).send(e)
         })
 })
+
+app.get("/get", (req, res) => {
+    student.find().then(data => res.send(data))
+})
+
+
 app.listen(port, () => {
     console.log(`server is run ${port}`)
 })
